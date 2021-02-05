@@ -1,17 +1,17 @@
 package projects
 
-import model.FunctionalTestBucketProvider
-import model.StatisticsBasedPerformanceTestBucketProvider
 import common.Branch
 import common.failedTestArtifactDestination
 import configurations.StagePasses
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
-import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.VersionedSettings
-import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.versionedSettings
 import model.CIBuildModel
+import model.FunctionalTestBucketProvider
 import model.Stage
+import model.StatisticsBasedPerformanceTestBucketProvider
 import promotion.PromotionProject
+import util.UtilPerformanceProject
+import util.UtilProject
 import java.io.File
 
 class RootProject(
@@ -44,6 +44,10 @@ class RootProject(
     }
 
     subProject(PromotionProject(model.branch))
+    if (model.branch == Branch.Master) {
+        subProject(UtilProject)
+        subProject(UtilPerformanceProject)
+    }
 
     buildTypesOrder = buildTypes
     subProjectsOrder = subProjects

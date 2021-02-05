@@ -3,11 +3,10 @@ package promotion
 import common.Os
 import common.gradleWrapper
 import common.requiresOs
-import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
-import jetbrains.buildServer.configs.kotlin.v2019_2.CheckoutMode
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import vcsroots.gradlePromotionMaster
+import vcsroots.useAbsoluteVcs
 
 // GradleBuildTool_Master_Promotion_SanityCheck
 object SanityCheck : BuildType({
@@ -17,13 +16,7 @@ object SanityCheck : BuildType({
     name = "SanityCheck"
     description = "Sanity check for promotion project"
 
-    vcs {
-        root(AbsoluteId(gradlePromotionMaster))
-
-        checkoutMode = CheckoutMode.ON_AGENT
-        this.cleanCheckout = cleanCheckout
-        showDependenciesChanges = true
-    }
+    vcs.useAbsoluteVcs(gradlePromotionMaster)
 
     steps {
         gradleWrapper {
