@@ -58,21 +58,21 @@ abstract class PublishRelease(task: String, requiredConfirmationCode: String, br
 }
 
 object PublishFinalRelease : PublishRelease(task = "promoteFinalRelease", requiredConfirmationCode = "final", init = {
-    uuid = "44e9390f-e46c-457e-aa18-31b020aef4de-1"
+    uuid = "44e9390f-e46c-457e-aa18-31b020aef4de-2"
     id("Gradle_Promotion_FinalRelease")
     name = "Release - Final"
     description = "Promotes the latest successful change on 'release' as a new release"
 })
 
 object PublishReleaseCandidate : PublishRelease(task = "promoteRc", requiredConfirmationCode = "rc", init = {
-    uuid = "5ed504bb-5ec3-46dc-a28a-e42a63ebbb31-1"
+    uuid = "5ed504bb-5ec3-46dc-a28a-e42a63ebbb31-2"
     id("Promotion_ReleaseCandidate")
     name = "Release - Release Candidate"
     description = "Promotes the latest successful change on 'release' as a new release candidate"
 })
 
 object PublishMilestone : PublishRelease(task = "promoteMilestone", requiredConfirmationCode = "milestone", init = {
-    uuid = "2ffb238a-08af-4f95-b863-9830d2bc3872-1"
+    uuid = "2ffb238a-08af-4f95-b863-9830d2bc3872-2"
     id("Promotion_Milestone")
     name = "Release - Milestone"
     description = "Promotes the latest successful change on 'release' as a new milestone"

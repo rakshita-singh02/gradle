@@ -4,8 +4,8 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.DslContext
 
 enum class Branch(val buildTypeId: String) {
     // For backward compatibility
-    Master("Check2"),
-    Release("Release_Check2");
+    Master("Check3"),
+    Release("Release_Check3");
 
     companion object {
         fun current(): Branch {

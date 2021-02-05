@@ -11,7 +11,7 @@ import vcsroots.gradleMaster
 import vcsroots.useAbsoluteVcs
 
 object WarmupEc2Agent : BuildType({
-    uuid = "980bce31-2a3e-4563-9717-7c03e184f4a4-1"
+    uuid = "980bce31-2a3e-4563-9717-7c03e184f4a4-2"
     name = "Warmup EC2 Agent"
     id("Util_WarmupEc2Agent")
 
