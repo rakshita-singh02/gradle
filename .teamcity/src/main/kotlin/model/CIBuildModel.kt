@@ -272,8 +272,12 @@ data class TestCoverage(
     ) :
         this(uuid, testType, os, testJvm.version, testJvm.vendor, buildJvmVersion, expectedBucketNumber, withoutDependencies, testDistribution)
 
+    fun asId(projectId: String): String {
+        return "${projectId}_$testCoveragePrefix"
+    }
+
     fun asId(model: CIBuildModel): String {
-        return "${model.projectId}$testCoveragePrefix"
+        return asId(model.projectId)
     }
 
     private

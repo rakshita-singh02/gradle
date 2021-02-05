@@ -126,7 +126,7 @@ class StatisticBasedFunctionalTestBucketProvider(private val model: CIBuildModel
     }
 
     private fun determineSubProjectClassTimes(testCoverage: TestCoverage, buildProjectClassTimes: BuildProjectToSubprojectTestClassTimes): Map<String, List<TestClassTime>>? {
-        val testCoverageId = testCoverage.asId(model)
+        val testCoverageId = testCoverage.asId("Gradle_Check")
         return buildProjectClassTimes[testCoverageId] ?: if (testCoverage.testType == TestType.soak) {
             null
         } else {
@@ -137,7 +137,7 @@ class StatisticBasedFunctionalTestBucketProvider(private val model: CIBuildModel
                     it.buildJvmVersion == testCoverage.buildJvmVersion
             }
             foundTestCoverage?.let {
-                buildProjectClassTimes[it.asId(model)]
+                buildProjectClassTimes[it.asId("Gradle_Check")]
             }?.also {
                 println("No test statistics found for ${testCoverage.asName()} (${testCoverage.uuid}), re-using the data from ${foundTestCoverage.asName()} (${foundTestCoverage.uuid})")
             }
