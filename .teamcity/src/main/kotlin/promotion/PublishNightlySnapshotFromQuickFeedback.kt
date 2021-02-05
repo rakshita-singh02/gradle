@@ -29,7 +29,7 @@ class PublishNightlySnapshotFromQuickFeedback(branch: Branch) : PublishGradleDis
             Branch.Release -> "eeff4410-1e7d-4db6-b7b8-34c1f2754477"
             else -> throw IllegalArgumentException("Unsupported branch: $branch")
         }
-        id("Gradle_Promotion_${branch.name}SnapshotFromQuickFeedback")
+        id("Promotion_${branch.name}SnapshotFromQuickFeedback")
         name = "Nightly Snapshot (from QuickFeedback)"
         description = "Promotes the latest successful changes on '$branch' from Quick Feedback as a new nightly snapshot"
     }

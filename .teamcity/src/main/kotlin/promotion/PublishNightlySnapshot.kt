@@ -30,7 +30,7 @@ class PublishNightlySnapshot(branch: Branch) : PublishGradleDistribution(
             Branch.Release -> "1f5ca7f8-b0f5-41f9-9ba7-6d518b2822f0"
             else -> throw IllegalArgumentException("Unsupported branch: $branch")
         }
-        id("Gradle_Promotion_${branch.name}Nightly")
+        id("Promotion_${branch.name}Nightly")
         name = "Nightly Snapshot"
         description = "Promotes the latest successful changes on '${branch.name.toLowerCase()}' from Ready for Nightly as a new nightly snapshot"
 
