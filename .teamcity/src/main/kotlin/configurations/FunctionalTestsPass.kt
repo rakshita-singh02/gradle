@@ -17,9 +17,6 @@
 package configurations
 
 import common.applyDefaultSettings
-import configurations.BaseGradleBuildType
-import configurations.publishBuildStatusToGithub
-import configurations.snapshotDependencies
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import model.CIBuildModel
 import projects.FunctionalTestProject

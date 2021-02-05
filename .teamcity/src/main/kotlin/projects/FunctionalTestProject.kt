@@ -1,10 +1,10 @@
 package projects
 
-import model.FunctionalTestBucketProvider
 import configurations.FunctionalTest
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 import model.CIBuildModel
+import model.FunctionalTestBucketProvider
 import model.Stage
 import model.TestCoverage
 

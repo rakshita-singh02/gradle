@@ -2,8 +2,6 @@ package promotion
 
 import common.Branch
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
-import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.VersionedSettings
-import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.versionedSettings
 
 class PromotionProject(branch: Branch) : Project({
     uuid = "16c9f3e3-36a9-4596-a35c-70a3c7a2c5c8-2"

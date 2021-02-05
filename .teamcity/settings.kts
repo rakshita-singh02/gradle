@@ -1,22 +1,49 @@
-import model.JsonBasedGradleSubprojectProvider
-import model.StatisticBasedFunctionalTestBucketProvider
 import jetbrains.buildServer.configs.kotlin.v2019_2.project
 import jetbrains.buildServer.configs.kotlin.v2019_2.version
 import jetbrains.buildServer.configs.kotlin.v2019_2.DslContext
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
-import model.CIBuildModel
 import common.Branch
-import projects.RootProject
-import java.io.File
+import projects.GradleBuildToolRootProject
 
 version = "2020.2"
-val model = CIBuildModel(
-    branch = Branch.current(),
-    buildScanTags = listOf("Check"),
-    subprojects = JsonBasedGradleSubprojectProvider(File("./subprojects.json"))
-)
-DslContext.parentProjectId = AbsoluteId(model.rootProjectId)
-DslContext.projectId = AbsoluteId(model.projectId)
-DslContext.projectName = model.projectName
-val gradleBuildBucketProvider = StatisticBasedFunctionalTestBucketProvider(model, File("./test-class-data.json"))
-project(RootProject(model, gradleBuildBucketProvider))
+
+/*
+
+Master (buildTypeId: Gradle_Master)
+ |----- Check (buildTypeId: Gradle_Check, for backward compatibility)
+ |        |---- QuickFeedbackLinux (buildTypeId: Gradle_Check_QuickFeedbackLinux)
+ |        |---- QuickFeedback
+ |        |---- ...
+ |        |---- ReadyForRelease
+ |
+ |----- Promotion (buildTypeId: Gradle_Promotion)
+ |        |----- Nightly Snapshot
+ |        |----- ...
+ |
+ |----- Util
+         |----- WarmupEc2Agent
+         |----- AdHocPerformanceTest
+
+Release (buildTypeId: Gradle_Release)
+ |----- Check (buildTypeId: Gradle_Release_Check)
+ |        |---- QuickFeedbackLinux (buildTypeId: Gradle_Release_Check_QuickFeedbackLinux)
+ |        |---- QuickFeedback
+ |        |---- ...
+ |        |---- ReadyForRelease
+ |
+ |----- Promotion (buildTypeId: Gradle_Release_Promotion)
+ |        |----- Nightly Snapshot
+ |        |----- ...
+ |
+ |----- Util
+         |----- WarmupEc2Agent
+         |----- AdHocPerformanceTest
+ */
+val branch = Branch.current()
+val parentProjectId = "GradleBuildTool"
+
+DslContext.parentProjectId = AbsoluteId(parentProjectId)
+DslContext.projectId = AbsoluteId("${parentProjectId}_${branch.name}")
+DslContext.projectName = branch.name
+
+project(GradleBuildToolRootProject(branch))

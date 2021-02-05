@@ -1,10 +1,5 @@
 package model
 
-import model.FlameGraphGeneration
-import model.GradleSubprojectProvider
-import model.PerformanceScenario
-import model.PerformanceTestCoverage
-import model.Scenario
 import common.Branch
 import common.JvmCategory
 import common.JvmVendor
@@ -17,7 +12,6 @@ import configurations.Gradleception
 import configurations.SanityCheck
 import configurations.SmokeTests
 import configurations.TestPerformanceTest
-import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 
 enum class StageNames(override val stageName: String, override val description: String, override val uuid: String) : StageName {
@@ -35,7 +29,7 @@ enum class StageNames(override val stageName: String, override val description: 
 
 data class CIBuildModel(
     val branch: Branch,
-    val projectPrefix: String = "GradleBuildTool_${if (branch == Branch.Master) "Check2" else branch.name}_",
+    val projectId: String,
     val publishStatusToGitHub: Boolean = true,
     val buildScanTags: List<String> = emptyList(),
     val stages: List<Stage> = listOf(
@@ -189,11 +183,7 @@ data class CIBuildModel(
         )
     ),
     val subprojects: GradleSubprojectProvider
-) {
-    val rootProjectId: String = projectPrefix.substringBefore("_")
-    val projectId: String = projectPrefix.removeSuffix("_")
-    val projectName: String = branch.name
-}
+)
 
 interface BuildTypeBucket {
     fun createFunctionalTestsFor(model: CIBuildModel, stage: Stage, testCoverage: TestCoverage, bucketIndex: Int): FunctionalTest
@@ -283,7 +273,7 @@ data class TestCoverage(
         this(uuid, testType, os, testJvm.version, testJvm.vendor, buildJvmVersion, expectedBucketNumber, withoutDependencies, testDistribution)
 
     fun asId(model: CIBuildModel): String {
-        return "${model.projectPrefix}$testCoveragePrefix"
+        return "${model.projectId}$testCoveragePrefix"
     }
 
     private
@@ -292,8 +282,8 @@ data class TestCoverage(
 
     fun asConfigurationId(model: CIBuildModel, subProject: String = ""): String {
         val prefix = "${testCoveragePrefix}_"
-        val shortenedSubprojectName = shortenSubprojectName(model.projectPrefix, prefix + subProject)
-        return model.projectPrefix + if (subProject.isNotEmpty()) shortenedSubprojectName else "${prefix}0"
+        val shortenedSubprojectName = shortenSubprojectName(model.projectId, prefix + subProject)
+        return model.projectId + "_" + if (subProject.isNotEmpty()) shortenedSubprojectName else "${prefix}0"
     }
 
     private

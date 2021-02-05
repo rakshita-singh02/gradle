@@ -16,8 +16,6 @@
 
 package promotion
 
-import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
-import jetbrains.buildServer.configs.kotlin.v2019_2.CheckoutMode
 import jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay
 import vcsroots.gradlePromotionBranches
 

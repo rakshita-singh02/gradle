@@ -8,12 +8,6 @@ import configurations.FunctionalTest
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildSteps
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import model.BuildTypeBucket
-import model.CIBuildModel
-import model.GradleSubproject
-import model.Stage
-import model.TestCoverage
-import model.TestType
 import java.io.File
 import java.util.LinkedList
 

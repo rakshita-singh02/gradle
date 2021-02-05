@@ -16,18 +16,14 @@
 
 package model
 
-import configurations.PerformanceTest
 import com.alibaba.fastjson.JSON
 import com.alibaba.fastjson.JSONArray
 import com.alibaba.fastjson.JSONObject
 import common.Os
+import configurations.PerformanceTest
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildStep
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildSteps
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import model.CIBuildModel
-import model.PerformanceTestType
-import model.Stage
-import model.TestCoverage
 import java.io.File
 import java.nio.charset.StandardCharsets
 import java.util.LinkedList

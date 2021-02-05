@@ -1,12 +1,12 @@
 package projects
 
 import configurations.PerformanceTest
-import model.PerformanceTestBucketProvider
-import model.PerformanceTestCoverage
-import model.PerformanceTestProjectSpec
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 import model.CIBuildModel
+import model.PerformanceTestBucketProvider
+import model.PerformanceTestCoverage
+import model.PerformanceTestProjectSpec
 import model.Stage
 
 abstract class PerformanceTestProject(model: CIBuildModel, val spec: PerformanceTestProjectSpec, val performanceTests: List<PerformanceTest>) : Project({

@@ -10,7 +10,7 @@ import model.CIBuildModel
 import model.Stage
 
 class Gradleception(model: CIBuildModel, stage: Stage) : BaseGradleBuildType(model, stage = stage, init = {
-    uuid = "${model.projectPrefix}Gradleception"
+    uuid = "${model.projectId}_Gradleception"
     id = AbsoluteId(uuid)
     name = "Gradleception - Java8 Linux"
     description = "Builds Gradle with the version of Gradle which is currently under development (twice)"

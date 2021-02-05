@@ -1,7 +1,5 @@
 package configurations
 
-import configurations.masterReleaseBranchFilter
-import configurations.triggerExcludes
 import common.Os.LINUX
 import common.applyDefaultSettings
 import common.buildToolGradleParameters
@@ -13,15 +11,10 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.Dependencies
 import jetbrains.buildServer.configs.kotlin.v2019_2.FailureAction
 import jetbrains.buildServer.configs.kotlin.v2019_2.SnapshotDependency
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.ScheduleTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.schedule
-import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import model.CIBuildModel
 import model.Stage
 import model.StageName
 import model.StageNames
-import model.Trigger
 import projects.StageProject
 
 class StagePasses(model: CIBuildModel, stage: Stage, prevStage: Stage?, stageProject: StageProject) : BaseGradleBuildType(model, init = {
@@ -107,11 +100,11 @@ class StagePasses(model: CIBuildModel, stage: Stage, prevStage: Stage?, stagePro
     }
 })
 
-fun stageTriggerUuid(model: CIBuildModel, stage: Stage) = "${model.projectPrefix}Stage_${stage.stageName.uuid}_Trigger"
+fun stageTriggerUuid(model: CIBuildModel, stage: Stage) = "${model.projectId}_Stage_${stage.stageName.uuid}_Trigger"
 
 fun stageTriggerId(model: CIBuildModel, stage: Stage) = stageTriggerId(model, stage.stageName)
 
-fun stageTriggerId(model: CIBuildModel, stageName: StageName) = AbsoluteId("${model.projectPrefix}Stage_${stageName.id}_Trigger")
+fun stageTriggerId(model: CIBuildModel, stageName: StageName) = AbsoluteId("${model.projectId}_Stage_${stageName.id}_Trigger")
 
 fun <T : BuildType> Dependencies.snapshotDependencies(buildTypes: Iterable<T>, snapshotConfig: SnapshotDependency.(T) -> Unit = {}) {
     buildTypes.forEach { buildType ->

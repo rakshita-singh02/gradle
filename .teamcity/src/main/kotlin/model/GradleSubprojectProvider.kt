@@ -17,9 +17,6 @@
 package model
 
 import com.alibaba.fastjson.JSON
-import model.GradleSubproject
-import model.Stage
-import model.TestCoverage
 import java.io.File
 
 val ignoredSubprojects = listOf(

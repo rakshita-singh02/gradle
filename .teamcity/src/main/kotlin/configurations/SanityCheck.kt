@@ -28,6 +28,6 @@ class SanityCheck(model: CIBuildModel, stage: Stage) : BaseGradleBuildType(model
     )
 }) {
     companion object {
-        fun buildTypeId(model: CIBuildModel) = "${model.projectPrefix}SanityCheck"
+        fun buildTypeId(model: CIBuildModel) = "${model.projectId}_SanityCheck"
     }
 }

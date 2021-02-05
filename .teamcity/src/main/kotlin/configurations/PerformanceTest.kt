@@ -16,7 +16,6 @@
 
 package configurations
 
-import model.PerformanceTestBuildSpec
 import common.Os
 import common.applyPerformanceTestSettings
 import common.buildToolGradleParameters
@@ -27,12 +26,10 @@ import common.killGradleProcessesStep
 import common.performanceTestCommandLine
 import common.removeSubstDirOnWindows
 import common.substDirOnWindows
-import configurations.BaseGradleBuildType
-import configurations.applyDefaultDependencies
-import configurations.buildScanTag
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildSteps
 import model.CIBuildModel
+import model.PerformanceTestBuildSpec
 import model.Stage
 
 class PerformanceTest(

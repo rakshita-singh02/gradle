@@ -17,8 +17,6 @@
 package model
 
 import common.Os
-import model.CIBuildModel
-import model.PerformanceTestType
 import java.util.Locale
 
 interface PerformanceTestBuildSpec {
@@ -54,7 +52,7 @@ data class PerformanceTestCoverage(
 
     override
     fun asConfigurationId(model: CIBuildModel) =
-        "${model.projectPrefix}${oldUuid ?: "PerformanceTest$uuid"}"
+        "${model.projectId}_${oldUuid ?: "PerformanceTest$uuid"}"
 
     override
     fun asName(): String =
@@ -72,7 +70,7 @@ data class FlameGraphGeneration(
 ) : PerformanceTestProjectSpec {
     override
     fun asConfigurationId(model: CIBuildModel) =
-        "${model.projectPrefix}PerformanceTest$uuid"
+        "${model.projectId}_PerformanceTest$uuid"
 
     override
     fun asName(): String =

@@ -23,19 +23,20 @@ import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import projects.FunctionalTestProject
-import projects.RootProject
+import projects.CheckProject
 import projects.StageProject
 import java.io.File
 
 class CIConfigIntegrationTests {
     private val subprojectProvider = JsonBasedGradleSubprojectProvider(File("../.teamcity/subprojects.json"))
     private val model = CIBuildModel(
+        projectId = "Gradle_Check",
         branch = Branch.Master,
         buildScanTags = listOf("Check"),
         subprojects = subprojectProvider
     )
     private val gradleBuildBucketProvider = StatisticBasedFunctionalTestBucketProvider(model, File("./test-class-data.json").absoluteFile)
-    private val rootProject = RootProject(model, gradleBuildBucketProvider)
+    private val rootProject = CheckProject(model, gradleBuildBucketProvider)
 
     private
     fun Project.searchSubproject(id: String): StageProject = (subProjects.find { it.id!!.value == id } as StageProject)
@@ -48,7 +49,7 @@ class CIConfigIntegrationTests {
 
     @Test
     fun macBuildsHasEmptyRepoMirrorUrlsParam() {
-        val rootProject = RootProject(model, gradleBuildBucketProvider)
+        val rootProject = CheckProject(model, gradleBuildBucketProvider)
         val readyForRelease = rootProject.searchSubproject("Gradle_Check_Stage_ReadyforRelease")
         val macBuilds = readyForRelease.subProjects.filter { it.name.contains("Macos") }.flatMap { (it as FunctionalTestProject).functionalTests }
         assertTrue(macBuilds.isNotEmpty())

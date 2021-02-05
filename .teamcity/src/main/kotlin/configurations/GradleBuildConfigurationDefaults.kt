@@ -1,6 +1,5 @@
 package configurations
 
-import configurations.allBranchesFilter
 import common.Os
 import common.applyDefaultSettings
 import common.buildToolGradleParameters

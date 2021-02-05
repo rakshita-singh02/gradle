@@ -1,14 +1,10 @@
 package projects
 
+import common.failedTestArtifactDestination
+import configurations.FunctionalTest
 import configurations.FunctionalTestsPass
 import configurations.PerformanceTest
 import configurations.PerformanceTestsPass
-import model.FlameGraphGeneration
-import model.FunctionalTestBucketProvider
-import model.PerformanceTestBucketProvider
-import model.PerformanceTestCoverage
-import common.failedTestArtifactDestination
-import configurations.FunctionalTest
 import configurations.SanityCheck
 import configurations.buildReportTab
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
@@ -17,13 +13,17 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.FailureAction
 import jetbrains.buildServer.configs.kotlin.v2019_2.IdOwner
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 import model.CIBuildModel
+import model.FlameGraphGeneration
+import model.FunctionalTestBucketProvider
+import model.PerformanceTestBucketProvider
+import model.PerformanceTestCoverage
 import model.SpecificBuild
 import model.Stage
 import model.TestType
 
 class StageProject(model: CIBuildModel, functionalTestBucketProvider: FunctionalTestBucketProvider, performanceTestBucketProvider: PerformanceTestBucketProvider, stage: Stage, rootProjectUuid: String) : Project({
-    this.uuid = "${model.projectPrefix}Stage_${stage.stageName.uuid}"
-    this.id = AbsoluteId("${model.projectPrefix}Stage_${stage.stageName.id}")
+    this.uuid = "${model.projectId}_Stage_${stage.stageName.uuid}"
+    this.id = AbsoluteId("${model.projectId}_Stage_${stage.stageName.id}")
     this.name = stage.stageName.stageName
     this.description = stage.stageName.description
 }) {

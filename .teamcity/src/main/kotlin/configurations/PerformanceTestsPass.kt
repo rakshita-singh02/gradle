@@ -16,16 +16,12 @@
 
 package configurations
 
-import model.PerformanceTestProjectSpec
 import common.Os
 import common.applyDefaultSettings
-import configurations.BaseGradleBuildType
-import configurations.gradleRunnerStep
-import configurations.publishBuildStatusToGithub
-import configurations.snapshotDependencies
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.ReuseBuilds
 import model.CIBuildModel
+import model.PerformanceTestProjectSpec
 import model.PerformanceTestType
 import projects.PerformanceTestProject
 

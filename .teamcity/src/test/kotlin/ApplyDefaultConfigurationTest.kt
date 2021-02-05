@@ -47,6 +47,7 @@ class ApplyDefaultConfigurationTest {
 
     private
     val buildModel = CIBuildModel(
+        projectId = "Gradle_Check",
         branch = Branch.Master,
         buildScanTags = listOf("Check"),
         subprojects = JsonBasedGradleSubprojectProvider(File("../.teamcity/subprojects.json"))
