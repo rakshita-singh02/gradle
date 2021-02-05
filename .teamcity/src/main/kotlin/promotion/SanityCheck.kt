@@ -13,7 +13,7 @@ import vcsroots.gradlePromotionMaster
 object SanityCheck : BuildType({
     // From Gradle_Promotion_MasterSanityCheck
     uuid = "bf9b573a-6e5e-4db1-88b2-399e709026b5-1"
-    id = AbsoluteId("GradleBuildTool_Check_Promotion_SanityCheck")
+    id("Promotion_SanityCheck")
     name = "SanityCheck"
     description = "Sanity check for promotion project"
 
