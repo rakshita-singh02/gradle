@@ -15,7 +15,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.ParameterDisplay
 
 abstract class AdHocPerformanceScenario(os: Os) : BuildType({
     val id = "Util_Performance_AdHocPerformanceScenario${os.asName()}"
-    this.uuid = id
+    this.uuid = id + "_2"
     name = "AdHoc Performance Scenario - ${os.asName()}"
     id(id)
 
