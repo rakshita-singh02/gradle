@@ -26,8 +26,8 @@ class PublishNightlySnapshot(branch: Branch) : PublishGradleDistribution(
 ) {
     init {
         this.uuid = when (branch) {
-            Branch.Master -> "01432c63-861f-4d08-ae0a-7d127f63096e"
-            Branch.Release -> "1f5ca7f8-b0f5-41f9-9ba7-6d518b2822f0"
+            Branch.Master -> "01432c63-861f-4d08-ae0a-7d127f63096e-1"
+            Branch.Release -> "1f5ca7f8-b0f5-41f9-9ba7-6d518b2822f0-1"
             else -> throw IllegalArgumentException("Unsupported branch: $branch")
         }
         id("Promotion_${branch.name}Nightly")

@@ -25,8 +25,8 @@ class PublishNightlySnapshotFromQuickFeedback(branch: Branch) : PublishGradleDis
 ) {
     init {
         this.uuid = when (branch) {
-            Branch.Master -> "9a55bec1-4e70-449b-8f45-400093505afb"
-            Branch.Release -> "eeff4410-1e7d-4db6-b7b8-34c1f2754477"
+            Branch.Master -> "9a55bec1-4e70-449b-8f45-400093505afb-1"
+            Branch.Release -> "eeff4410-1e7d-4db6-b7b8-34c1f2754477-1"
             else -> throw IllegalArgumentException("Unsupported branch: $branch")
         }
         id("Promotion_${branch.name}SnapshotFromQuickFeedback")
