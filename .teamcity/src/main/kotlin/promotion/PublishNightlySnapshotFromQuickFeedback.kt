@@ -24,11 +24,6 @@ class PublishNightlySnapshotFromQuickFeedback(branch: Branch) : PublishGradleDis
     triggerName = "QuickFeedback"
 ) {
     init {
-//        this.uuid = when (branch) {
-//            Branch.Master -> "9a55bec1-4e70-449b-8f45-400093505afb-2"
-//            Branch.Release -> "eeff4410-1e7d-4db6-b7b8-34c1f2754477-2"
-//            else -> throw IllegalArgumentException("Unsupported branch: $branch")
-//        }
         id("Promotion_${branch.name}SnapshotFromQuickFeedback")
         name = "Nightly Snapshot (from QuickFeedback)"
         description = "Promotes the latest successful changes on '$branch' from Quick Feedback as a new nightly snapshot"

@@ -22,7 +22,7 @@ import model.Stage
 import model.TestType
 
 class StageProject(model: CIBuildModel, functionalTestBucketProvider: FunctionalTestBucketProvider, performanceTestBucketProvider: PerformanceTestBucketProvider, stage: Stage, rootProjectUuid: String) : Project({
-    this.id = AbsoluteId("${model.projectId}_Stage_${stage.stageName.uuid}")
+    this.id = AbsoluteId("${model.projectId}_Stage_${stage.stageName.id}")
     this.name = stage.stageName.stageName
     this.description = stage.stageName.description
 }) {

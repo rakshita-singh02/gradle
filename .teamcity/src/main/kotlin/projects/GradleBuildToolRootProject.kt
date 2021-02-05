@@ -12,7 +12,6 @@ import util.UtilProject
 import java.io.File
 
 class GradleBuildToolRootProject(branch: Branch) : Project({
-//    uuid = DslContext.projectId.absoluteId
     id = DslContext.projectId
     name = DslContext.projectName
 
