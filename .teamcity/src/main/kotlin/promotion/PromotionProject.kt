@@ -24,16 +24,16 @@ class PromotionProject(branch: Branch) : Project({
 
 
     params {
-        password("env.ORG_GRADLE_PROJECT_gradleS3SecretKey", "credentialsJSON:1d713842-74ae-48ef-8a89-c60fc1704545")
-        password("env.ORG_GRADLE_PROJECT_artifactoryUserPassword", "credentialsJSON:2b7529cd-77cd-49f4-9416-9461f6ac9018")
+        password("env.ORG_GRADLE_PROJECT_gradleS3SecretKey", "dummy")
+        password("env.ORG_GRADLE_PROJECT_artifactoryUserPassword", "dummy")
         param("env.ORG_GRADLE_PROJECT_gradleS3AccessKey", "AKIAQBZWBNAJCJGCAMFL")
-        password("env.DOTCOM_DEV_DOCS_AWS_SECRET_KEY", "credentialsJSON:853fec36-91c4-4815-9a04-c9073b497352")
+        password("env.DOTCOM_DEV_DOCS_AWS_SECRET_KEY", "dummy")
         param("env.DOTCOM_DEV_DOCS_AWS_ACCESS_KEY", "AKIAX5VJCER2X7DPYFXF")
-        password("env.ORG_GRADLE_PROJECT_sdkmanToken", "credentialsJSON:64e60515-68db-4bbd-aeae-ba2e058ac3cb")
+        password("env.ORG_GRADLE_PROJECT_sdkmanToken", "dummy")
         param("env.JAVA_HOME", "%linux.java11.openjdk.64bit%")
         param("env.ORG_GRADLE_PROJECT_artifactoryUserName", "bot-build-tool")
-        password("env.ORG_GRADLE_PROJECT_infrastructureEmailPwd", "credentialsJSON:ea637ef1-7607-40a4-be39-ef1aa8bc5af0")
-        param("env.ORG_GRADLE_PROJECT_sdkmanKey", "8ed1a771bc236c287ad93c699bfdd2d7")
+        password("env.ORG_GRADLE_PROJECT_infrastructureEmailPwd", "dummy")
+        param("env.ORG_GRADLE_PROJECT_sdkmanKey", "dummy")
     }
 
     buildTypesOrder = arrayListOf(
