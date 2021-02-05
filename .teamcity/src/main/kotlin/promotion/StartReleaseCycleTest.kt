@@ -23,7 +23,6 @@ import vcsroots.gradlePromotionBranches
 
 object StartReleaseCycleTest : BasePromotionBuildType(vcsRootId = gradlePromotionBranches, cleanCheckout = false) {
     init {
-        uuid = "59823634-f79d-4c11-bbca-782957a7d65c-2"
         id("Promotion_AllBranchesStartReleaseCycleTest")
         name = "Start Release Cycle Test"
         description = "Test for Start Release Cycle pipeline"

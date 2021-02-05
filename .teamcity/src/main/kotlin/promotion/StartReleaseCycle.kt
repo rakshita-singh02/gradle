@@ -23,7 +23,6 @@ import vcsroots.gradlePromotionMaster
 
 object StartReleaseCycle : BasePromotionBuildType(vcsRootId = gradlePromotionMaster) {
     init {
-        uuid = "355487d7-45b9-4387-9fc5-713e7683e6d0-2"
         id("Promotion_StartReleaseCycle")
         name = "Start Release Cycle"
         description = "Promotes a successful build on master as the start of a new release cycle on the release branch"

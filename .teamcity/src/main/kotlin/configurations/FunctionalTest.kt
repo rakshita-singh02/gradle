@@ -10,7 +10,7 @@ import model.TestType
 
 class FunctionalTest(
     model: CIBuildModel,
-    uuid: String,
+    id: String,
     name: String,
     description: String,
     testCoverage: TestCoverage,
@@ -20,10 +20,9 @@ class FunctionalTest(
     extraBuildSteps: BuildSteps.() -> Unit = {},
     preBuildSteps: BuildSteps.() -> Unit = {}
 ) : BaseGradleBuildType(model, stage = stage, init = {
-    this.uuid = uuid
     this.name = name
     this.description = description
-    id = AbsoluteId(uuid)
+    this.id = AbsoluteId(id)
     val testTasks = getTestTaskName(testCoverage, stage, subprojects)
     val buildScanTags = listOf("FunctionalTest")
     val buildScanValues = mapOf(

@@ -10,8 +10,7 @@ import model.PerformanceTestProjectSpec
 import model.Stage
 
 abstract class PerformanceTestProject(model: CIBuildModel, val spec: PerformanceTestProjectSpec, val performanceTests: List<PerformanceTest>) : Project({
-    this.uuid = spec.asConfigurationId(model)
-    this.id = AbsoluteId(uuid)
+    this.id = AbsoluteId(spec.asConfigurationId(model))
     this.name = spec.asName()
 }) {
     init {

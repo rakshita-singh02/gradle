@@ -22,8 +22,7 @@ import model.CIBuildModel
 import projects.FunctionalTestProject
 
 class FunctionalTestsPass(model: CIBuildModel, functionalTestProject: FunctionalTestProject) : BaseGradleBuildType(model, init = {
-    uuid = functionalTestProject.uuid + "_Trigger"
-    id = AbsoluteId(uuid)
+    id = AbsoluteId("${functionalTestProject.id}_Trigger")
     name = functionalTestProject.name + " (Trigger)"
 
     applyDefaultSettings()

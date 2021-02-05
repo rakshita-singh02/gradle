@@ -9,8 +9,7 @@ import model.Stage
 import model.TestCoverage
 
 class FunctionalTestProject(model: CIBuildModel, functionalTestBucketProvider: FunctionalTestBucketProvider, testConfig: TestCoverage, stage: Stage) : Project({
-    this.uuid = testConfig.asId(model)
-    this.id = AbsoluteId(uuid)
+    this.id = AbsoluteId(testConfig.asId(model))
     this.name = testConfig.asName()
 }) {
     val functionalTests: List<FunctionalTest> = functionalTestBucketProvider.createFunctionalTestsFor(stage, testConfig)

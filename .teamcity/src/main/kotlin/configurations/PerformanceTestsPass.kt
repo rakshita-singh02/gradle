@@ -26,8 +26,7 @@ import model.PerformanceTestType
 import projects.PerformanceTestProject
 
 class PerformanceTestsPass(model: CIBuildModel, performanceTestProject: PerformanceTestProject) : BaseGradleBuildType(model, init = {
-    uuid = performanceTestProject.uuid + "_Trigger"
-    id = AbsoluteId(uuid)
+    id = AbsoluteId("${performanceTestProject.id}_Trigger")
     val performanceTestSpec = performanceTestProject.spec
     name = performanceTestProject.name + " (Trigger)"
 

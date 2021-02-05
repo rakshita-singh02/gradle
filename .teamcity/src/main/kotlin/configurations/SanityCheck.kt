@@ -6,8 +6,7 @@ import model.CIBuildModel
 import model.Stage
 
 class SanityCheck(model: CIBuildModel, stage: Stage) : BaseGradleBuildType(model, stage = stage, usesParentBuildCache = true, init = {
-    uuid = buildTypeId(model)
-    id = AbsoluteId(uuid)
+    id = AbsoluteId(buildTypeId(model))
     name = "Sanity Check"
     description = "Static code analysis, checkstyle, release notes verification, etc."
 

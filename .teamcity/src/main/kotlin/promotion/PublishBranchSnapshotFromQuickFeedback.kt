@@ -27,7 +27,6 @@ object PublishBranchSnapshotFromQuickFeedback : PublishGradleDistribution(
     vcsRootId = gradlePromotionBranches
 ) {
     init {
-        uuid = "b7ecebd3-3812-4532-aa77-5679f9e9d6b3-2"
         id("Promotion_PublishBranchSnapshotFromQuickFeedback")
         name = "Publish Branch Snapshot (from Quick Feedback)"
         description = "Deploys a new distribution snapshot for the selected build/branch. Does not update master or the documentation."

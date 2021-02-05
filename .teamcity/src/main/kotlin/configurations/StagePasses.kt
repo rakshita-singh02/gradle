@@ -18,8 +18,7 @@ import model.StageNames
 import projects.StageProject
 
 class StagePasses(model: CIBuildModel, stage: Stage, prevStage: Stage?, stageProject: StageProject) : BaseGradleBuildType(model, init = {
-    uuid = stageTriggerUuid(model, stage)
-    id = stageTriggerId(model, stage)
+    id = AbsoluteId(stageTriggerUuid(model, stage))
     name = stage.stageName.stageName + " (Trigger)"
 
     applyDefaultSettings()

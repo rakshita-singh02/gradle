@@ -54,8 +54,7 @@ class TestPerformanceTest(model: CIBuildModel, stage: Stage) : BaseGradleBuildTy
         ))
     }
 
-    uuid = "${model.projectId}_TestPerformanceTest"
-    id = AbsoluteId(uuid)
+    id = AbsoluteId("${model.projectId}_TestPerformanceTest")
     name = "Test performance test tasks - Java8 Linux"
     description = "Tries to run an adhoc performance test without a database connection to verify this is still working"
 
