@@ -10,14 +10,12 @@ class PromotionProject(branch: Branch) : Project({
     id("Promotion")
     name = "Promotion"
 
-//    val nightlyMasterSnapshot = PublishNightlySnapshot(uuid = "01432c63-861f-4d08-ae0a-7d127f63096e", branch = "master", hour = 0)
-//    val masterSnapshotFromQuickFeedback = PublishNightlySnapshotFromQuickFeedback(uuid = "9a55bec1-4e70-449b-8f45-400093505afb", branch = "master")
-//    val nightlyReleaseSnapshot = PublishNightlySnapshot(uuid = "1f5ca7f8-b0f5-41f9-9ba7-6d518b2822f0", branch = "release", hour = 1)
-//    val releaseSnapshotFromQuickFeedback = PublishNightlySnapshotFromQuickFeedback(uuid = "eeff4410-1e7d-4db6-b7b8-34c1f2754477", branch = "release")
-
     buildType(SanityCheck)
-//    buildType(PublishNightlySnapshot)
-//    buildType(PublishBranchSnapshotFromQuickFeedback)
+    buildType(PublishNightlySnapshot(branch))
+    buildType(PublishNightlySnapshotFromQuickFeedback(branch))
+    if(branch == Branch.Master) {
+        buildType(PublishBranchSnapshotFromQuickFeedback)
+    }
 //    buildType(StartReleaseCycle)
 //    buildType(PublishMilestone)
 //    buildType(PublishReleaseCandidate)

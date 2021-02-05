@@ -19,14 +19,15 @@ package promotion
 import common.Os
 import common.requiresNoEc2Agent
 import common.requiresOs
+import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.CheckoutMode
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
-abstract class BasePromotionBuildType(vcsRoot: GitVcsRoot, cleanCheckout: Boolean = true) : BuildType() {
+abstract class BasePromotionBuildType(vcsRootAbsoluteId: String, cleanCheckout: Boolean = true) : BuildType() {
     init {
         vcs {
-            root(vcsRoot)
+            root(AbsoluteId(vcsRootAbsoluteId))
 
             checkoutMode = CheckoutMode.ON_AGENT
             this.cleanCheckout = cleanCheckout

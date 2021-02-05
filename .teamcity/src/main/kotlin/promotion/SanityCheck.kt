@@ -1,6 +1,5 @@
 package promotion
 
-import common.Branch
 import common.Os
 import common.gradleWrapper
 import common.requiresOs
@@ -8,7 +7,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.CheckoutMode
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
-import promotion.vcsRoots.Gradle_Promotion__master_
+import vcsroots.gradlePromotionMaster
 
 // GradleBuildTool_Master_Promotion_SanityCheck
 object SanityCheck : BuildType({
@@ -16,17 +15,13 @@ object SanityCheck : BuildType({
     uuid = "bf9b573a-6e5e-4db1-88b2-399e709026b5-1"
     id = AbsoluteId("GradleBuildTool_Check_Promotion_SanityCheck")
     name = "SanityCheck"
-//     GradleBuildTool_Master
-//    id("SanityCheck")
-    // Master
-//    name = "SanityCheck"
-    description = "Compilation and test execution of buildSrc"
+    description = "Sanity check for promotion project"
 
     vcs {
-        root(AbsoluteId("GradleBuildTool_GradlePromoteMaster"))
+        root(AbsoluteId(gradlePromotionMaster))
 
         checkoutMode = CheckoutMode.ON_AGENT
-        cleanCheckout = true
+        this.cleanCheckout = cleanCheckout
         showDependenciesChanges = true
     }
 
