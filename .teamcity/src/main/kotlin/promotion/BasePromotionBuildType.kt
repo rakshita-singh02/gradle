@@ -22,12 +22,11 @@ import common.requiresOs
 import jetbrains.buildServer.configs.kotlin.v2019_2.AbsoluteId
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.CheckoutMode
-import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
-abstract class BasePromotionBuildType(vcsRootAbsoluteId: String, cleanCheckout: Boolean = true) : BuildType() {
+abstract class BasePromotionBuildType(vcsRootId: String, cleanCheckout: Boolean = true) : BuildType() {
     init {
         vcs {
-            root(AbsoluteId(vcsRootAbsoluteId))
+            root(AbsoluteId(vcsRootId))
 
             checkoutMode = CheckoutMode.ON_AGENT
             this.cleanCheckout = cleanCheckout
